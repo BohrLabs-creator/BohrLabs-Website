@@ -4,6 +4,21 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Bohr Labs - Venture Builder for Future</title>
+    <meta
+      name="description"
+      content="Bohr Labs - Deep-tech venture builder for the nation future. We catalyze the next generation of technology implementation in AI, Quantum, Robotics, and Energy."
+    />
+    <meta
+      property="og:title"
+      content="Bohr Labs - Venture Builder for Future"
+    />
+    <meta
+      property="og:description"
+      content="Bohr Labs catalyzes the next generation of deep technology implementation in industry. We back technical founders on building AI, Quantum, Robotics, and Energy."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bohrlabs.id" />
+    <link rel="icon" type="image/png" href="src/BohrLabs_logo_white.png" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -51,6 +66,9 @@
       };
     </script>
     <style type="text/tailwindcss">
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         @apply bg-forest-green text-white font-body antialiased;
         background-image:
@@ -134,7 +152,7 @@
           <!-- <a class="text-xs font-medium hover:text-accent-gold transition-colors text-white/60 px-5 py-2"
                     href="#contact">CONTACT</a> -->
         </div>
-        <div class="hidden md:block" style="visibility: hidden">
+        <div class="hidden md:block" hidden>
           <button
             class="bg-accent-gold hover:bg-accent-gold-glow text-forest-green font-display font-bold text-xs px-6 py-3 rounded-full transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(229,184,11,0.2)]"
           >
@@ -181,7 +199,7 @@
         >
           <div
             class="inline-flex items-center gap-3 text-accent-gold text-[10px] font-bold tracking-[0.2em] border border-accent-gold/20 px-4 py-2 w-fit bg-accent-gold/5 rounded-full uppercase"
-            style="visibility: hidden"
+            hidden
           >
             <span
               class="w-1.5 h-1.5 bg-accent-gold rounded-full shadow-[0_0_8px_#E5B80B] animate-pulse"
@@ -205,14 +223,15 @@
             tomorrow.
           </p>
           <div class="flex flex-col sm:flex-row gap-5 mt-6">
-            <button
+            <a
+              href="#portfolio"
               class="bg-white/10 hover:bg-white/20 text-white border border-white/10 font-display font-medium text-base px-8 py-4 rounded-full transition-all flex items-center justify-center gap-2 backdrop-blur-sm"
             >
               <span>Explore Portfolio</span>
               <span class="material-symbols-outlined text-sm"
                 >arrow_downward</span
               >
-            </button>
+            </a>
           </div>
         </div>
         <div class="lg:col-span-5 relative flex justify-center items-center">
@@ -436,7 +455,7 @@
             >
               <span
                 class="text-[10px] font-bold text-accent-gold tracking-widest uppercase bg-black/30 backdrop-blur-md px-3 py-1 rounded-full border border-white/10"
-                style="visibility: hidden"
+                hidden
                 >Seed</span
               >
               <div
@@ -607,10 +626,7 @@
             </p>
           </div>
         </div>
-        <div
-          class="lg:col-span-6 flex flex-col justify-center"
-          style="visibility: hidden"
-        >
+        <div class="lg:col-span-6 flex flex-col justify-center" hidden>
           <div
             class="soft-card p-10 relative overflow-hidden asymmetric-shape-2 border-0"
           >
@@ -822,7 +838,7 @@
                                 LinkedIn
                             </a>
                         </li> -->
-              <li style="visibility: hidden">
+              <li hidden>
                 <a
                   class="text-text-soft/80 hover:text-accent-gold transition-colors flex items-center gap-3 group text-sm"
                   href="#"
@@ -885,7 +901,18 @@
           }
         }
 
+        function closeMenuOnClickOutside(event) {
+          if (
+            isMenuOpen &&
+            !mobileMenu.contains(event.target) &&
+            !mobileMenuButton.contains(event.target)
+          ) {
+            toggleMenu();
+          }
+        }
+
         mobileMenuButton.addEventListener("click", toggleMenu);
+        document.addEventListener("click", closeMenuOnClickOutside);
 
         mobileLinks.forEach((link) => {
           link.addEventListener("click", () => {
